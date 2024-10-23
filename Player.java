@@ -1,25 +1,47 @@
 class Player {
     private String playerName;
-    private int battingScore;
+    private int jerseyNo;
     private String battingStyle;
-    private String bowlingStyle;
+    private int battingScore;
     private int ballsFaced;
-    private int noOfOvers;
-    private boolean isEligible;
+    private boolean isEligibleToBat;
+    private String bowlingStyle;
+    private int noOfOversBowled;
+    private int runsGiven;
+    private int wicketsTaken;
+    private boolean isEligibleToBowl;
+    private boolean isEligibleToBowlExtraOver;
 
-    Player(String playerName,String battingStyle,String bowlingStyle)
+    Player(int jerseyNo,String playerName,String battingStyle,String bowlingStyle)
     {
+        this.jerseyNo=jerseyNo;
         this.playerName = playerName;
         this.battingStyle = battingStyle;
         this.bowlingStyle = bowlingStyle;
-        this.isEligible=true;
+        this.isEligibleToBat=true;
+        this.isEligibleToBowl=true;
+        this.isEligibleToBowlExtraOver=true;
     }
-
+    public int getJerseyNo() {
+        return jerseyNo;
+    }
+    public int getBattingScore()
+    {
+        return battingScore;
+    }
     public int getBallsFaced() {
         return ballsFaced;
     }
     public int getNoOfOvers() {
-        return noOfOvers;
+        return noOfOversBowled;
+    }
+    public int getWicketsTaken()
+    {
+        return wicketsTaken;
+    }
+    public int getRunsGiven()
+    {
+        return runsGiven;
     }
     public String getPlayerName() {
         return playerName;
@@ -30,22 +52,46 @@ class Player {
     public String getBattingStyle() {
         return battingStyle;
     }
-    public boolean isEligible() {
-        return isEligible;
+    public boolean isEligibleToBat() {
+        return isEligibleToBat;
     }
-
+    public boolean isEligibleToBowl()
+    {
+        return isEligibleToBowl;
+    }
+    public boolean isEligibleToBowlExtraOver()
+    {
+        return isEligibleToBowlExtraOver;
+    }
     public void setBallsFaced(int ballsFaced) {
         this.ballsFaced = ballsFaced;
     }
     public void setNoOfOvers(int noOfOvers) {
-        this.noOfOvers = noOfOvers;
+        this.noOfOversBowled = noOfOvers;
     }
 
     public void setBattingScore(int battingScore) {
         this.battingScore = battingScore;
     }
+    public void setWicketsTaken(int wickets)
+    {
+        this.wicketsTaken=wickets;
+    }
+    public void setRunsGiven(int runs)
+    {
+        this.runsGiven=runs;
+    }
+    public void setEligibleToBat(boolean eligible) {
+        this.isEligibleToBat = eligible;
+    }
 
-    public void setEligible(boolean eligible) {
-        this.isEligible = eligible;
+    public void setEligibleToBowl(boolean eligible)
+    {
+        isEligibleToBowl=eligible;
+    }
+
+    public void setEligibleToBowlExtraOver(boolean eligible)
+    {
+        isEligibleToBowlExtraOver=eligible;
     }
 }
