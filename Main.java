@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.lang.Math;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     static List<Team> teams=new ArrayList<Team>();
     public static void main(String[] args) {
@@ -11,7 +13,7 @@ public class Main {
                            "|                  Scorer Application                   |\n"+
                            "---------------------------------------------------------");
         Main main=new Main();
-        main.initializeTeam();
+        initializeTeam();
         main.printScoreCard(teams.get(0));
         System.out.println("\n\nPress Any key and press Enter Key to Next Team Info...");
         Input.getString();
@@ -20,14 +22,19 @@ public class Main {
         System.out.println("\n\nPress Any key and press Enter Key to start...");
         Input.getString();
         clear();
-        System.out.println("Its a Toss time...");
-        System.out.println("\nToss Won by : \n1.Zoho A\n2.Zoho B");
-        int teamNo=Input.getInteger();
-        System.out.println("Elected to : \n1.Bat\n2.Bowl");
-        int elect=Input.getInteger();
         System.out.println("Enter no of overs : ");
         int noOfOvers=Input.getInteger();
+        Input.getString();
+        clear();
+        System.out.println("Its a Toss time...");
+        //System.out.println("\nToss Won by : \n1.Zoho A\n2.Zoho B");
+        byte teamNo=(byte)((Math.random()*2)+1);
+        //System.out.println("Elected to : \n1.Bat\n2.Bowl");
+        int elect=(byte)((Math.random()*2)+1);
         Innings innings1=new Innings(noOfOvers);
+        System.out.println("Press Enter key to toss the coin...");
+        Input.getString();
+        clear();
         System.out.print("\nToss won by "+teams.get(teamNo-1).getTeamName());
         if(teamNo==1)
         {
@@ -57,12 +64,20 @@ public class Main {
                 System.out.print(" and Elected to Bowl first\n");
                 innings1.setBattingTeam(teams.get(0));
                 innings1.setBowlingTeam(teams.get(1));
-            } 
+            }
         }
         System.out.println("\n\nEnter any key and press Enter to start match...");
         Input.getString();
         clear();
         innings1.startMatch();
+        clear();
+        Innings innings2=new Innings(noOfOvers,innings1.getTotalScore()+1);
+        innings2.setBattingTeam(innings1.getBowlingTeam());
+        innings2.setBowlingTeam(innings1.getBattingTeam());
+        System.out.println("\n\npress Enter to start 2 innings...");
+        Input.getString();
+        clear();
+        innings2.startMatch();
 //        System.out.println("Enter team1 Details...");
 //        System.out.println("Enter team1 Name : ");
 //        String team1Name=Input.getString();
@@ -81,8 +96,8 @@ public class Main {
         System.out.printf("%-10s %-25s %-15s %-15s%n", "Jersey No","Player Name", "Batting Style", "Bowling Style");
         System.out.println("---------------------------------------------------------------------------------");
         for(Player player:team.getPlayers()) {
-           System.out.printf("%-10s %-25s %-15s %-15s%n",player.getJerseyNo(),player.getPlayerName(),player.getBattingStyle(),player.getBowlingStyle()+"\n");
-       }
+            System.out.printf("%-10s %-25s %-15s %-15s%n",player.getJerseyNo(),player.getPlayerName(),player.getBattingStyle(),player.getBowlingStyle()+"\n");
+        }
     }
     public static void initializeTeam()
     {
@@ -95,9 +110,9 @@ public class Main {
         Player p6=new Player(no++,"Hari","Left","Spin");
         Player p7=new Player(no++,"Sukumar","Right","spin");
         Player p8=new Player(no++,"karthi","Right","Medium Fast");
-        Player p9=new Player(no++,"nadimuthu","Right","Spin");
-        Player p10=new Player(no++,"Bala","Left","Medium Fast");
-        Player p11=new Player(no++,"Tamarai","Right","Spin");
+        Player p9=new Player(no++,"SJ","Right","Spin");
+        Player p10=new Player(no++,"Harini","Left","Medium Fast");
+        Player p11=new Player(no++,"Subitsha","Right","Spin");
 
         ArrayList<Player> players=new ArrayList<>(Arrays.asList(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11));
         Team team1=new Team("Zoho A",players);
@@ -148,4 +163,5 @@ public class Main {
         }
         return players;
     }*/
+
 }

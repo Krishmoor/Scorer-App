@@ -7,6 +7,6 @@ public class Input
         return sc.nextInt();
     }
     public static String getString(){
-        return sc.next();
+        return sc.nextLine();
     }
 }
